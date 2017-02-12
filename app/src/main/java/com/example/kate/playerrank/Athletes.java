@@ -1,5 +1,7 @@
 package com.example.kate.playerrank;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
 
 public class Athletes {
 
+    @SerializedName("sportspeople")
     private List<Athlete> list;
 
     public Athletes() {

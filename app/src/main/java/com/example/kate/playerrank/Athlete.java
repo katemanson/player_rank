@@ -1,5 +1,7 @@
 package com.example.kate.playerrank;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by admin on 12/02/2017.
  */
@@ -7,10 +9,14 @@ package com.example.kate.playerrank;
 public class Athlete {
 
     private int id;
+    @SerializedName("first_name")
     private String firstName;
+    @SerializedName("last_name")
     private String lastName;
+    @SerializedName("full_name")
     private String fullName;
     private double points;
+    @SerializedName("profile_picture_url")
     private String picUrl;
 
     public Athlete(int id, String firstName, String lastName, String fullName, double points, String picUrl) {
