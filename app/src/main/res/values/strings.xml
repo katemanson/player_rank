@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PlayerRank</string>
+    <string name="instruction">Who's ranked highest?</string>
 </resources>

@@ -43,6 +43,9 @@ public class GameTest {
 
     @Test
     public void canOrderAthletesByPoints() {
+        assertEquals("Joe Johnson", testList.get(0).getFullName());
+        assertEquals("Stephen Curry", testList.get(1).getFullName());
+        assertEquals("Hassan Whiteside", testList.get(2).getFullName());
         testGame.orderAthletesByPoints(testList);
         assertEquals(3, testList.size());
         assertEquals("Joe Johnson", testList.get(0).getFullName());
@@ -61,5 +64,20 @@ public class GameTest {
         assertEquals(1, testGame.getRounds().size());
         assertEquals(1, testGame.getRounds().get(0).getRoundNumber());
         assertEquals(3, testGame.getRounds().get(0).getQuestionAthletes().size());
+    }
+
+    @Test
+    public void correctAnswerRecordedInRounds() {
+        Round testRound = new Round(12, testList, 1);
+        testGame.addRound(testRound);
+        assertEquals(1, testGame.getRounds().size());
+        assertEquals(12, testGame.getRounds().get(0).getRoundNumber());
+        assertEquals(3, testGame.getRounds().get(0).getQuestionAthletes().size());
+        assertEquals(1, testGame.getRounds().get(0).getAnswerAthleteId());
+        assertEquals(false, testGame.getRounds().get(0).getWhetherGuessCorrect());
+        testRound.checkAnswer(-39);
+        assertEquals(false, testGame.getRounds().get(0).getWhetherGuessCorrect());
+        testRound.checkAnswer(1);
+        assertEquals(true, testGame.getRounds().get(0).getWhetherGuessCorrect());
     }
 }

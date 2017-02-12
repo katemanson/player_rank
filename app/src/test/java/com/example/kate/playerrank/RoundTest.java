@@ -67,7 +67,10 @@ public class RoundTest {
         assertEquals(false, testRound.getWhetherGuessCorrect());
         assertEquals(false, testRound.checkAnswer(12));
         assertEquals(false, testRound.getWhetherGuessCorrect());
+        assertEquals(false, testRound.checkAnswer(-12));
+        assertEquals(false, testRound.getWhetherGuessCorrect());
         assertEquals(true, testRound.checkAnswer(1));
         assertEquals(true, testRound.getWhetherGuessCorrect());
     }
+
 }
