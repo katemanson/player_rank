@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by admin on 12/02/2017.
  */
 
-public class Athlete {
+public class Athlete implements Comparable<Athlete> {
 
     private int id;
     @SerializedName("first_name")
@@ -28,9 +28,7 @@ public class Athlete {
         this.picUrl = picUrl;
     }
 
-    public int getId() {
-        return this.id;
-    }
+    public int getId() { return this.id; }
 
     public String getFirstName() {
         return this.firstName;
@@ -50,5 +48,12 @@ public class Athlete {
 
     public String getPicUrl() {
         return this.picUrl;
+    }
+
+    public int compareTo(Athlete anotherAthlete) {
+        double pointsDiff = this.getPoints() - anotherAthlete.getPoints();
+        if (pointsDiff > 0) return 1;
+        if (pointsDiff < 0) return -1;
+        else return 0;
     }
 }

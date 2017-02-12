@@ -25,4 +25,5 @@ public class Athletes {
     public ArrayList<Athlete> getCopyList() {
         return new ArrayList<>(this.list);
     }
+
 }

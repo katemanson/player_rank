@@ -46,7 +46,7 @@ public class ApiClient {
         return response.toString();
     }
 
-    static Athletes getAthletes(String urlString) {
+    static Athletes getAthletesObject(String urlString) {
 
         Athletes athletes;
 

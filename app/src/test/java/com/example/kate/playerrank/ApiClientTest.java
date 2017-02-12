@@ -24,6 +24,6 @@ public class ApiClientTest {
 
     @Test
     public void canGetAthletesObject() {
-        assertEquals(20, ApiClient.getAthletes(urlString).getCopyList().size());
+        assertEquals(20, ApiClient.getAthletesObject(urlString).getCopyList().size());
     }
 }
