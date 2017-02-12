@@ -11,17 +11,16 @@ import static org.junit.Assert.*;
  * Created by admin on 12/02/2017.
  */
 
-public class GameTest {
+public class RoundTest {
 
-    Game testGame;
     Athlete testAthleteOne;
     Athlete testAthleteTwo;
     Athlete testAthleteThree;
     ArrayList<Athlete> testList;
+    Round testRound;
 
     @Before
     public void before() {
-        testGame = new Game();
         testAthleteOne = new Athlete(1, "Stephen", "Curry", "Stephen Curry", 47.94303797468354, "https://d17odppiik753x.cloudfront.net/playerimages/nba/9524.png");
         testAthleteTwo = new Athlete(4, "Hassan", "Whiteside", "Hassan Whiteside", 35.75342465753425, "https://d17odppiik753x.cloudfront.net/playerimages/nba/12363.png");
         testAthleteThree = new Athlete(17, "Joe", "Johnson", "Joe Johnson", 22.103703703703705, "https://d17odppiik753x.cloudfront.net/playerimages/nba/9447.png");
@@ -29,37 +28,26 @@ public class GameTest {
         testList.add(testAthleteThree);
         testList.add(testAthleteOne);
         testList.add(testAthleteTwo);
+        testRound = new Round(6, testList, 1);
     }
 
     @Test
-    public void canGetCopyAthletes() {
-        assertEquals(20, testGame.getCopyAthletes().size());
+    public void canGetRoundNumber() {
+        assertEquals(6, testRound.getRoundNumber());
     }
 
     @Test
     public void canGetQuestionAthletes() {
-        assertEquals(3, testGame.getQuestionAthletes(3).size());
+        assertEquals(3, testRound.getQuestionAthletes().size());
     }
 
     @Test
-    public void canOrderAthletesByPoints() {
-        testGame.orderAthletesByPoints(testList);
-        assertEquals(3, testList.size());
-        assertEquals("Joe Johnson", testList.get(0).getFullName());
-        assertEquals("Hassan Whiteside", testList.get(1).getFullName());
-        assertEquals("Stephen Curry", testList.get(2).getFullName());
+    public void canGetAnswerAthleteId() {
+        assertEquals(1, testRound.getAnswerAthleteId());
     }
 
     @Test
-    public void canGetRounds() {
-        assertEquals(0, testGame.getRounds().size());
-    }
-
-    @Test
-    public void canSetUpNewRound() {
-        testGame.newRound(3);
-        assertEquals(1, testGame.getRounds().size());
-        assertEquals(1, testGame.getRounds().get(0).getRoundNumber());
-        assertEquals(3, testGame.getRounds().get(0).getQuestionAthletes().size());
+    public void canGetWhetherGuessCorrect() {
+        assertEquals(false, testRound.getWhetherGuessCorrect());
     }
 }
