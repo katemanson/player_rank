@@ -50,4 +50,24 @@ public class RoundTest {
     public void canGetWhetherGuessCorrect() {
         assertEquals(false, testRound.getWhetherGuessCorrect());
     }
+
+    @Test
+    public void canSetWhetherGuessCorrect() {
+        testRound.setWhetherGuessCorrect(true);
+        assertEquals(true, testRound.getWhetherGuessCorrect());
+        testRound.setWhetherGuessCorrect(false);
+        assertEquals(false, testRound.getWhetherGuessCorrect());
+    }
+
+    @Test
+    public void canCheckAnswer() {
+        assertEquals(false, testRound.checkAnswer(17));
+        assertEquals(false, testRound.getWhetherGuessCorrect());
+        assertEquals(false, testRound.checkAnswer(4));
+        assertEquals(false, testRound.getWhetherGuessCorrect());
+        assertEquals(false, testRound.checkAnswer(12));
+        assertEquals(false, testRound.getWhetherGuessCorrect());
+        assertEquals(true, testRound.checkAnswer(1));
+        assertEquals(true, testRound.getWhetherGuessCorrect());
+    }
 }

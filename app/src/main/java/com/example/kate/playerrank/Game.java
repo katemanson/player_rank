@@ -73,13 +73,8 @@ public class Game {
 
         Round newRound = new Round(newRoundNumber, questionAthletes, answerAthleteId);
         addRound(newRound);
-        System.out.println("Round: " + newRound.getRoundNumber());
-        System.out.println("First athlete: " + newRound.getQuestionAthletes().get(0).getFullName() + " " + newRound.getQuestionAthletes().get(0).getPoints());
-        System.out.println("Second athlete: " + newRound.getQuestionAthletes().get(1).getFullName() + " "  + newRound.getQuestionAthletes().get(1).getPoints());
-        System.out.println("Third athlete: " + newRound.getQuestionAthletes().get(2).getFullName() + " "  + newRound.getQuestionAthletes().get(2).getPoints());
-        System.out.println("Answer id: " + newRound.getAnswerAthleteId());
-        System.out.println("Guess correct: " + newRound.getWhetherGuessCorrect());
     }
+
 
 
 }

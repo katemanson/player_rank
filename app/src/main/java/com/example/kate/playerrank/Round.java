@@ -36,4 +36,16 @@ public class Round {
     public boolean getWhetherGuessCorrect() {
         return guessCorrect;
     }
+
+    public void setWhetherGuessCorrect(boolean trueOrFalse) {
+        this.guessCorrect = trueOrFalse;
+    }
+
+    public boolean checkAnswer(int answer) {
+        if (answer == getAnswerAthleteId()) {
+            setWhetherGuessCorrect(true);
+            return true;
+        }
+        else return false;
+    }
 }
