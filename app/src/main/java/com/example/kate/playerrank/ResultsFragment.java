@@ -53,7 +53,7 @@ public class ResultsFragment extends Fragment {
         resultsView.setText(
                 "Number of rounds: " + numberOfRounds + "\n" +
                 "Correct answers: " + numberCorrect + "\n" +
-                "Percentage correct: " + percentageCorrect
+                "Percentage correct: " + percentageCorrect + "%"
         );
 
         return view;

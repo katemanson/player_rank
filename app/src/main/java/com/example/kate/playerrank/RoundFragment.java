@@ -52,6 +52,14 @@ public class RoundFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_round, container, false);
 
+        //ToDo: Show toast when number of athletes goes up; need to check in Back Stack for one or two fewer in previous round (fragments refd in Back Stack as "round_n").
+//        if (mRound.getQuestionAthletes().size() == 3) {
+//            Toast.makeText(getContext(), R.string.over_fifty_toast, Toast.LENGTH_SHORT).show();
+//        }
+//        if (mRound.getQuestionAthletes().size() == 4) {
+//            Toast.makeText(getContext(), R.string.over_seventy_toast, Toast.LENGTH_SHORT).show();
+//        }
+
         mInstruction = (TextView) view.findViewById(R.id.instruction_text);
 
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.button_container);
@@ -80,6 +88,7 @@ public class RoundFragment extends Fragment {
                     boolean correct = mRound.checkAnswer(athleteId);
                     //ToDo: Delete Logs.
                     Log.d("PlayerRank", "Guess correct: " + mRound.getWhetherGuessCorrect());
+
                     int correctToast;
                     if (correct) {
                         correctToast = R.string.correct_toast;
@@ -87,6 +96,7 @@ public class RoundFragment extends Fragment {
                         correctToast = R.string.incorrect_toast;
                     }
                     Toast.makeText(getContext(), correctToast, Toast.LENGTH_SHORT).show();
+
                 }
             });
             layout.addView(athleteButton);

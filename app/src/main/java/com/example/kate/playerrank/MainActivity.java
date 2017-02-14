@@ -64,7 +64,7 @@ public class MainActivity extends FragmentActivity {
 
             fragMan.beginTransaction()
                     .replace(R.id.fragment_container, newFragment)
-                    .addToBackStack(null)
+                    .addToBackStack("round_" + (newRound.getRoundNumber() - 1))
                     .commit();
             }
         });
@@ -82,7 +82,7 @@ public class MainActivity extends FragmentActivity {
 
                 fragMan.beginTransaction()
                         .replace(R.id.fragment_container, resultsFragment)
-                        .addToBackStack(null)
+                        .addToBackStack("round_" + mGame.getLatestRound().getRoundNumber())
                         .commit();
             }
         });

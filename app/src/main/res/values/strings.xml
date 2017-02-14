@@ -4,6 +4,8 @@
     <string name="next_button">Next round</string>
     <string name="finish_button">Finish</string>
     <string name="correct_toast">Correct!</string>
-    <string name="incorrect_toast">Nope, sorry.</string>
+    <string name="incorrect_toast">Nope, sorry.\nTry again... ?</string>
     <string name="results_title">Results</string>
+    <string name="over_fifty_toast">You\'ve got more than 50% right!\nSee how you do with three to choose from...</string>
+    <string name="over_seventy_toast">You\'ve got more than 70% right!\nSee how you do with four to choose from...</string>
 </resources>

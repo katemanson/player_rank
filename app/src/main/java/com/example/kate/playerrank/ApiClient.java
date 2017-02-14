@@ -3,6 +3,9 @@ package com.example.kate.playerrank;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
@@ -48,11 +51,40 @@ public class ApiClient {
 
     static Athletes getAthletesObject(String urlString) {
 
-        Athletes athletes;
-
         String jsonString = getJsonString(urlString);
         Gson gson = new Gson();
-        athletes = gson.fromJson(jsonString, Athletes.class);
+        Athletes athletes = gson.fromJson(jsonString, Athletes.class);
         return athletes;
+    }
+
+    static void getAthletePhotos(Athletes athletes) {
+
+        HttpsURLConnection connection = null;
+
+        for (Athlete athlete : Athletes) {
+
+            try {
+
+                String picUrlString = athlete.getPicUrl();
+                URL picUrl = new URL(picUrlString);
+                connection = (HttpsURLConnection) picUrl.openConnection();
+
+                InputStream initialStream = new FileInputStream(new File(connection.getInputStream()));
+
+            } catch(Exception e) {
+
+                e.printStackTrace();
+                return null;
+
+            } finally {
+
+                if (connection != null) {
+
+                    connection.disconnect();
+
+                }
+            }
+
+        }
     }
 }

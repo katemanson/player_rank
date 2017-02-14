@@ -9,8 +9,8 @@
         android:textSize="24sp"
         android:fontFamily="sans-serif"
         android:textStyle="bold"
-        android:paddingLeft="36sp"
-        android:paddingRight="36sp"
+        android:paddingLeft="30sp"
+        android:paddingRight="30sp"
         android:paddingBottom="12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -19,8 +19,8 @@
         android:id="@+id/results_text"
         android:textSize="24sp"
         android:fontFamily="sans-serif"
-        android:paddingLeft="36sp"
-        android:paddingRight="36sp"
+        android:paddingLeft="30sp"
+        android:paddingRight="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
