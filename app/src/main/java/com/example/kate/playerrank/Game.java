@@ -22,12 +22,18 @@ public class Game {
         this.athletes = ApiClient.getAthletesObject(URL_STRING);
         this.rounds = new ArrayList<>();
     }
+
     public ArrayList<Athlete> getCopyAthletes() {
         return this.athletes.getCopyList();
     }
 
     public ArrayList<Round> getRounds() {
         return new ArrayList<>(this.rounds);
+    }
+
+    public Round getLatestRound() {
+        Round latestRound = getRounds().get(getRounds().size() - 1);
+        return latestRound;
     }
 
     public void addRound(Round newRound) {
@@ -62,19 +68,45 @@ public class Game {
         return athleteList;
     }
 
-    public void newRound(int numberOfAthletes) {
+    public int countRounds() {
+        int countRounds = 0;
+        for (Round round : getRounds()) {
+            countRounds++;
+        }
+        return countRounds;
+    }
+
+    public int getPercentCorrect() {
+        int countCorrect = 0;
+
+        for (Round round : getRounds()) {
+            if (round.getWhetherGuessCorrect()) {
+                countCorrect++;
+            }
+        }
+        int percentCorrect = (int) (((double) countCorrect)/countRounds()*100);
+        return percentCorrect;
+    }
+
+    public void newRound() {
+
+        int numberOfAthletes = 2;
+        if (countRounds() > 6 && getPercentCorrect() > 50) {
+            numberOfAthletes = 3;
+        } if (countRounds() > 6 && getPercentCorrect() > 70) {
+            numberOfAthletes = 4;
+        }
+
         ArrayList<Athlete> questionAthletes = getQuestionAthletes(numberOfAthletes);
 
         ArrayList<Athlete> copyQuestion = new ArrayList<>(questionAthletes);
         Collections.sort(copyQuestion);
         int answerAthleteId = copyQuestion.get(copyQuestion.size() - 1).getId();
 
-        int newRoundNumber = this.rounds.size() + 1;
+        int newRoundNumber = getRounds().size() + 1;
 
         Round newRound = new Round(newRoundNumber, questionAthletes, answerAthleteId);
         addRound(newRound);
     }
-
-
 
 }

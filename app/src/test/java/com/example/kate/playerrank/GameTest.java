@@ -60,10 +60,19 @@ public class GameTest {
 
     @Test
     public void canSetUpNewRound() {
-        testGame.newRound(3);
+        testGame.newRound();
         assertEquals(1, testGame.getRounds().size());
         assertEquals(1, testGame.getRounds().get(0).getRoundNumber());
-        assertEquals(3, testGame.getRounds().get(0).getQuestionAthletes().size());
+        assertEquals(2, testGame.getRounds().get(0).getQuestionAthletes().size());
+    }
+
+    @Test
+    public void canGetLatestRound() {
+        testGame.newRound();
+        testGame.newRound();
+        testGame.newRound();
+        assertEquals(3, testGame.getLatestRound().getRoundNumber());
+        assertEquals(2, testGame.getLatestRound().getQuestionAthletes().size());
     }
 
     @Test
@@ -79,5 +88,19 @@ public class GameTest {
         assertEquals(false, testGame.getRounds().get(0).getWhetherGuessCorrect());
         testRound.checkAnswer(1);
         assertEquals(true, testGame.getRounds().get(0).getWhetherGuessCorrect());
+    }
+
+    @Test
+    public void canGetPercentCorrect() {
+        Round testRoundOne = new Round(12, testList, 1);
+        Round testRoundTwo = new Round(13, testList, 1);
+        Round testRoundThree = new Round(14, testList, 1);
+        testGame.addRound(testRoundOne);
+        testGame.addRound(testRoundTwo);
+        testGame.addRound(testRoundThree);
+        testRoundOne.checkAnswer(1);
+        testRoundTwo.checkAnswer(15);
+        testRoundThree.checkAnswer(1);
+        assertEquals(66, testGame.getPercentCorrect());
     }
 }

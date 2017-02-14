@@ -7,7 +7,7 @@ import java.util.List;
  * Created by admin on 12/02/2017.
  */
 
-public class Round {
+public class Round implements java.io.Serializable {
 
     private int roundNumber;
     private List<Athlete> questionAthletes;
@@ -30,15 +30,15 @@ public class Round {
     }
 
     public int getAnswerAthleteId() {
-        return answerAthleteId;
+        return this.answerAthleteId;
     }
 
     public boolean getWhetherGuessCorrect() {
-        return guessCorrect;
+        return this.guessCorrect;
     }
 
-    public void setWhetherGuessCorrect(boolean trueOrFalse) {
-        this.guessCorrect = trueOrFalse;
+    public void setWhetherGuessCorrect(boolean correct) {
+        this.guessCorrect = correct;
     }
 
     public boolean checkAnswer(int answer) {
