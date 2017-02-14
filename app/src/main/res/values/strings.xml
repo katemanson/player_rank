@@ -3,4 +3,6 @@
     <string name="instruction">Who\'s ranked highest?</string>
     <string name="next_button">Next round</string>
     <string name="finish_button">Finish</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Nope. Try again... ?</string>
 </resources>

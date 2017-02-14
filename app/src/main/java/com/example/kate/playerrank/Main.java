@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -50,6 +51,22 @@ public class Main extends FragmentActivity {
                     .add(R.id.fragment_container, fragment)
                     .commit();
         }
+
+        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ToDo: Go to next round.
+            }
+        });
+
+        mFinishButton = (Button) findViewById(R.id.finish_button);
+        mFinishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ToDo: Go to results activity/fragment.
+            }
+        });
 
     }
 }

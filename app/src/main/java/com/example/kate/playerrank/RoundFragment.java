@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -65,9 +66,25 @@ public class RoundFragment extends Fragment {
         for (int i = 0; i < athletes.size(); i++) {
             Button athleteButton = new Button(getActivity());
             athleteButton.setText(athletes.get(i).getFullName());
-            athleteButton.setId(athletes.get(i).getId());
             athleteButton.setMinHeight(300);
             athleteButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+
+            final int athleteId = athletes.get(i).getId();
+            athleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean correct = mRound.checkAnswer(athleteId);
+                    //ToDo: Delete Logs.
+                    Log.d("PlayerRank", "Guess correct: " + mRound.getWhetherGuessCorrect());
+                    int correctToast;
+                    if (correct) {
+                        correctToast = R.string.correct_toast;
+                    } else {
+                        correctToast = R.string.incorrect_toast;
+                    }
+                    Toast.makeText(getContext(), correctToast, Toast.LENGTH_SHORT).show();
+                }
+            });
             layout.addView(athleteButton);
         }
 

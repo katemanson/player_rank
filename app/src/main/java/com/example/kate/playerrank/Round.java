@@ -46,6 +46,9 @@ public class Round implements java.io.Serializable {
             setWhetherGuessCorrect(true);
             return true;
         }
-        else return false;
+        else {
+            setWhetherGuessCorrect(false);
+            return false;
+        }
     }
 }
