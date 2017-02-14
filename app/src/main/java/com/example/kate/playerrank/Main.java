@@ -19,7 +19,9 @@ import java.util.ArrayList;
 
 public class Main extends FragmentActivity {
 
-    Game mGame;
+    private Game mGame;
+    private Button mNextButton;
+    private Button mFinishButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
