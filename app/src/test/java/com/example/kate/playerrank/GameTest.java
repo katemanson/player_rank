@@ -101,6 +101,40 @@ public class GameTest {
         testRoundOne.checkAnswer(1);
         testRoundTwo.checkAnswer(15);
         testRoundThree.checkAnswer(1);
-        assertEquals(66, testGame.getPercentCorrect());
+        assertEquals(66, testGame.percentCorrect());
+    }
+
+    @Test
+    public void numberOfPlayersIncreasesWithPercentCorrect() {
+        Round testRoundOne = new Round(12, testList, 1);
+        Round testRoundTwo = new Round(13, testList, 1);
+        Round testRoundThree = new Round(14, testList, 1);
+        Round testRoundFour = new Round(15, testList, 1);
+        Round testRoundFive = new Round(16, testList, 1);
+        testRoundOne.checkAnswer(1);
+        testRoundTwo.checkAnswer(1);
+        testRoundThree.checkAnswer(1);
+        testRoundFour.checkAnswer(1);
+        testRoundFive.checkAnswer(12);
+        testGame.addRound(testRoundOne);
+        testGame.addRound(testRoundTwo);
+        testGame.addRound(testRoundThree);
+        testGame.addRound(testRoundFour);
+        testGame.addRound(testRoundFive);
+        assertEquals(5, testGame.countRounds());
+        testGame.newRound();
+        Round roundSix = testGame.getLatestRound();
+        assertEquals(6, roundSix.getRoundNumber());
+        assertEquals(2, roundSix.getQuestionAthletes().size());
+        roundSix.checkAnswer(12);
+        testGame.newRound();
+        Round roundSeven = testGame.getLatestRound();
+        assertEquals(7, roundSeven.getRoundNumber());
+        assertEquals(3, roundSeven.getQuestionAthletes().size());
+        testRoundFive.checkAnswer(1);
+        testGame.newRound();
+        Round roundEight = testGame.getLatestRound();
+        assertEquals(8, roundEight.getRoundNumber());
+        assertEquals(4, roundEight.getQuestionAthletes().size());
     }
 }

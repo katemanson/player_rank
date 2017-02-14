@@ -76,7 +76,7 @@ public class Game {
         return countRounds;
     }
 
-    public int getPercentCorrect() {
+    public int percentCorrect() {
         int countCorrect = 0;
 
         for (Round round : getRounds()) {
@@ -91,10 +91,13 @@ public class Game {
     public void newRound() {
 
         int numberOfAthletes = 2;
-        if (countRounds() > 6 && getPercentCorrect() > 50) {
-            numberOfAthletes = 3;
-        } if (countRounds() > 6 && getPercentCorrect() > 70) {
-            numberOfAthletes = 4;
+        if (countRounds() > 5) {
+            if (percentCorrect() > 50) {
+                numberOfAthletes = 3;
+            }
+            if (percentCorrect() > 70) {
+                numberOfAthletes = 4;
+            }
         }
 
         ArrayList<Athlete> questionAthletes = getQuestionAthletes(numberOfAthletes);
@@ -108,5 +111,4 @@ public class Game {
         Round newRound = new Round(newRoundNumber, questionAthletes, answerAthleteId);
         addRound(newRound);
     }
-
 }

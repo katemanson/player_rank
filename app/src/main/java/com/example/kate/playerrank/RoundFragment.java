@@ -27,6 +27,8 @@ public class RoundFragment extends Fragment {
 
     public static RoundFragment newInstance(Round newRound) {
         Bundle args = new Bundle();
+
+        //ToDo: ?Not sure implementing Serializable in Round class is a great idea. Better to pass round number as Fragment arg and recover specific Round from Game state?
         args.putSerializable(ARG_ROUND, newRound);
 
         RoundFragment fragment = new RoundFragment();
@@ -49,11 +51,13 @@ public class RoundFragment extends Fragment {
         Log.d("PlayerRank", "RoundFragment onCreateView called");
 
         View view = inflater.inflate(R.layout.fragment_round, container, false);
-        LinearLayout layout = (LinearLayout) view.findViewById(R.id.fragment_layout);
+        LinearLayout layout = (LinearLayout) view.findViewById(R.id.button_container);
 
         mInstruction = (TextView) view.findViewById(R.id.instruction_text);
 
         ArrayList<Athlete> athletes = mRound.getQuestionAthletes();
+
+        //ToDo: Delete Logs.
         Log.d("PlayerRank", "athletes 0: " + athletes.get(0).getFullName());
         Log.d("PlayerRank", "athletes 1: " + athletes.get(1).getFullName());
         Log.d("PlayerRank", "answer athlete id: " + Integer.toString(mRound.getAnswerAthleteId()));

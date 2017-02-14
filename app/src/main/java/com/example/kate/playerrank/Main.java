@@ -26,6 +26,7 @@ public class Main extends FragmentActivity {
 
         Log.d("PlayerRank", "Main onCreate called");
 
+        //ToDo: ?Create static context with getApplicationContext() to store context, access from fragments? (See http://stackoverflow.com/questions/8215308/using-context-in-a-fragment.)
         //ToDo: ?Better solution for getting data from API than running query in main thread (something to do with Loaders)? Delete the two lines below?
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -47,8 +48,6 @@ public class Main extends FragmentActivity {
                     .add(R.id.fragment_container, fragment)
                     .commit();
         }
-
-
 
     }
 }
