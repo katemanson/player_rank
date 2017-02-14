@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,9 +51,13 @@ public class RoundFragment extends Fragment {
         Log.d("PlayerRank", "RoundFragment onCreateView called");
 
         View view = inflater.inflate(R.layout.fragment_round, container, false);
-        LinearLayout layout = (LinearLayout) view.findViewById(R.id.button_container);
 
         mInstruction = (TextView) view.findViewById(R.id.instruction_text);
+
+        LinearLayout layout = (LinearLayout) view.findViewById(R.id.button_container);
+        TextView roundTitle = (TextView) view.findViewById(R.id.round_title);
+
+        roundTitle.setText("Round " + mRound.getRoundNumber());
 
         ArrayList<Athlete> athletes = mRound.getQuestionAthletes();
 
@@ -63,8 +66,9 @@ public class RoundFragment extends Fragment {
         Log.d("PlayerRank", "athletes 1: " + athletes.get(1).getFullName());
         Log.d("PlayerRank", "answer athlete id: " + Integer.toString(mRound.getAnswerAthleteId()));
 
+        //ToDo: Set up with player photos rather than text-only buttons.
         for (int i = 0; i < athletes.size(); i++) {
-            Button athleteButton = new Button(getActivity());
+            Button athleteButton = new Button(getContext());
             athleteButton.setText(athletes.get(i).getFullName());
             athleteButton.setMinHeight(300);
             athleteButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);

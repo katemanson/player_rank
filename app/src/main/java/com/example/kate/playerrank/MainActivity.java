@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by admin on 12/02/2017.
  */
 
-public class Main extends FragmentActivity {
+public class MainActivity extends FragmentActivity {
 
     private Game mGame;
     private Button mNextButton;
@@ -27,7 +27,7 @@ public class Main extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.d("PlayerRank", "Main onCreate called");
+        Log.d("PlayerRank", "MainActivity onCreate called");
 
         //ToDo: ?Create static context with getApplicationContext() to store context, access from fragments? (See http://stackoverflow.com/questions/8215308/using-context-in-a-fragment.)
         //ToDo: ?Better solution for getting data from API than running query in main thread (something to do with Loaders)? Delete the two lines below?
@@ -56,7 +56,15 @@ public class Main extends FragmentActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ToDo: Go to next round.
+
+            FragmentManager newFragMan = getSupportFragmentManager();
+            mGame.newRound();
+            Round newRound = mGame.getLatestRound();
+            RoundFragment newFragment = RoundFragment.newInstance(newRound);
+            newFragMan.beginTransaction()
+                    .replace(R.id.fragment_container, newFragment)
+                    .addToBackStack(null)
+                    .commit();
             }
         });
 
@@ -64,6 +72,7 @@ public class Main extends FragmentActivity {
         mFinishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //ToDo: Kill round fragment.
                 //ToDo: Go to results activity/fragment.
             }
         });
