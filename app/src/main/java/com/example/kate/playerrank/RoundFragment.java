@@ -66,12 +66,12 @@ public class RoundFragment extends Fragment {
         Log.d("PlayerRank", "athletes 1: " + athletes.get(1).getFullName());
         Log.d("PlayerRank", "answer athlete id: " + Integer.toString(mRound.getAnswerAthleteId()));
 
-        //ToDo: Set up with player photos rather than text-only buttons.
+        //ToDo: Set up with player photos and names rather than text-only buttons.
         for (int i = 0; i < athletes.size(); i++) {
             Button athleteButton = new Button(getContext());
             athleteButton.setText(athletes.get(i).getFullName());
-            athleteButton.setMinHeight(300);
-            athleteButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+            athleteButton.setMinHeight(200);
+            athleteButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
             final int athleteId = athletes.get(i).getId();
             athleteButton.setOnClickListener(new View.OnClickListener() {

@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
@@ -136,5 +137,31 @@ public class GameTest {
         Round roundEight = testGame.getLatestRound();
         assertEquals(8, roundEight.getRoundNumber());
         assertEquals(4, roundEight.getQuestionAthletes().size());
+    }
+
+    @Test
+    public void canGetResults() {
+        Round testRoundOne = new Round(12, testList, 1);
+        Round testRoundTwo = new Round(13, testList, 1);
+        Round testRoundThree = new Round(14, testList, 1);
+        Round testRoundFour = new Round(15, testList, 1);
+        Round testRoundFive = new Round(16, testList, 1);
+        Round testRoundSix = new Round(17, testList, 1);
+        testRoundOne.checkAnswer(1);
+        testRoundTwo.checkAnswer(12);
+        testRoundThree.checkAnswer(1);
+        testRoundFour.checkAnswer(1);
+        testRoundFive.checkAnswer(12);
+        testRoundSix.checkAnswer(1);
+        testGame.addRound(testRoundOne);
+        testGame.addRound(testRoundTwo);
+        testGame.addRound(testRoundThree);
+        testGame.addRound(testRoundFour);
+        testGame.addRound(testRoundFive);
+        testGame.addRound(testRoundSix);
+        HashMap<String, Integer> results = testGame.getResults();
+        assertEquals(6, (int) results.get("number of rounds"));
+        assertEquals(4, (int) results.get("number correct"));
+        assertEquals(66, (int) results.get("percentage correct"));
     }
 }

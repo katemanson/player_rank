@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -76,15 +77,18 @@ public class Game {
         return countRounds;
     }
 
-    public int percentCorrect() {
+    public int countCorrect() {
         int countCorrect = 0;
-
         for (Round round : getRounds()) {
             if (round.getWhetherGuessCorrect()) {
                 countCorrect++;
             }
         }
-        int percentCorrect = (int) (((double) countCorrect)/countRounds()*100);
+        return countCorrect;
+    }
+
+    public int percentCorrect() {
+        int percentCorrect = (int) (((double) countCorrect())/countRounds()*100);
         return percentCorrect;
     }
 
@@ -110,5 +114,16 @@ public class Game {
 
         Round newRound = new Round(newRoundNumber, questionAthletes, answerAthleteId);
         addRound(newRound);
+    }
+
+    public HashMap<String, Integer> getResults() {
+
+        HashMap<String, Integer> results = new HashMap<>();
+
+        results.put("number of rounds", countRounds());
+        results.put("number correct", countCorrect());
+        results.put("percentage correct", percentCorrect());
+
+        return results;
     }
 }

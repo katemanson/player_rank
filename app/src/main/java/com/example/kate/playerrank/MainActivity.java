@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by admin on 12/02/2017.
@@ -40,7 +41,7 @@ public class MainActivity extends FragmentActivity {
         }
         setContentView(R.layout.activity_main);
 
-        FragmentManager fragMan = getSupportFragmentManager();
+        final FragmentManager fragMan = getSupportFragmentManager();
         Fragment fragment = fragMan.findFragmentById(R.id.fragment_container);
 
         if (fragment == null) {
@@ -57,11 +58,11 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
 
-            FragmentManager newFragMan = getSupportFragmentManager();
             mGame.newRound();
             Round newRound = mGame.getLatestRound();
             RoundFragment newFragment = RoundFragment.newInstance(newRound);
-            newFragMan.beginTransaction()
+
+            fragMan.beginTransaction()
                     .replace(R.id.fragment_container, newFragment)
                     .addToBackStack(null)
                     .commit();
@@ -72,8 +73,17 @@ public class MainActivity extends FragmentActivity {
         mFinishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ToDo: Kill round fragment.
-                //ToDo: Go to results activity/fragment.
+
+                mNextButton.setVisibility(View.INVISIBLE);
+                mFinishButton.setVisibility(View.INVISIBLE);
+
+                HashMap<String, Integer> results = mGame.getResults();
+                ResultsFragment resultsFragment = ResultsFragment.newInstance(results);
+
+                fragMan.beginTransaction()
+                        .replace(R.id.fragment_container, resultsFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
