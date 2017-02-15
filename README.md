@@ -10,8 +10,8 @@ Screenshots at MVP:
 
 'Before' and 'after' MoSCoW (Must, Could, Should, Would) boards:
 
-![initial MoSCoW](https://github.com/katemanson/player_rank/raw/master/images/PlayerRank_Trello_0.png)
-![final MoSCoW](https://github.com/katemanson/player_rank/raw/master/images/PlayerRank_Trello_1.png)
+![initial MoSCoW](https://github.com/katemanson/player_rank/raw/master/images/PlayerRank_Trello_before.png)
+![final MoSCoW](https://github.com/katemanson/player_rank/raw/master/images/PlayerRank_Trello_after.png)
 
 ##Tech
 * Java in Android Studio
