@@ -2,9 +2,16 @@
 
 Android implementation of a basketball guessing game: each round, choose the player who's ranked highest. 
 
-Developed in and runs from the [Android Studio](https://developer.android.com/studio/index.html) IDE. 
+##To run it
+The project was developed in and runs from the [Android Studio](https://developer.android.com/studio/index.html) IDE.
 
-Screenshots at MVP:
+###Getting it out of the playerrank.bundle.zip file
+* Save the file to a directory of your choice; unzip it to get the playerrank.bundle
+* In your Terminal, navigate to the directory, then run `git clone playerrank.bundle -b master playerrank`
+* This should get you a `playerrank` directory containing the full git repo
+
+##About
+Emulator screenshots at MVP-ish stage:
 
 ![MVP screenshots](https://github.com/katemanson/player_rank/raw/master/images/PlayerRank_MVP.png)
 
@@ -13,18 +20,18 @@ Screenshots at MVP:
 ![initial MoSCoW](https://github.com/katemanson/player_rank/raw/master/images/PlayerRank_Trello_before.png)
 ![final MoSCoW](https://github.com/katemanson/player_rank/raw/master/images/PlayerRank_Trello_after.png)
 
-##Tech
+###Tech
 * Java in Android Studio
 * Unit tested with JUnit
 * Debugged by logging and using breakpoints within Android Studio
 * JSON data parsed to Java objects with [Gson](https://github.com/google/gson)
 
-##New things, learning points
+###New things, learning points
 * HTTP requests in Java
 * Parsing JSON in Java
 * Using fragments and images in Android
 
-##Highlights
+###Highlights
 * ^^^New things
 * Implementing Java's Comparable interface to enable sorting of Athlete objects by ranking points: 
 
