@@ -3,23 +3,23 @@ package com.example.kate.playerrank;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by admin on 12/02/2017.
  */
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Game mGame;
     private Button mNextButton;
@@ -31,7 +31,7 @@ public class MainActivity extends FragmentActivity {
         Log.d("PlayerRank", "MainActivity onCreate called");
 
         //ToDo: ?Create static context with getApplicationContext() to store context, access from fragments? (See http://stackoverflow.com/questions/8215308/using-context-in-a-fragment.)
-        //ToDo: ?Better solution for getting data from API than running query in main thread (something to do with Loaders)? Delete the two lines below?
+        //ToDo: Better solution for getting data than running query in main thread (Loaders)?
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -47,30 +47,34 @@ public class MainActivity extends FragmentActivity {
         if (fragment == null) {
             mGame.newRound();
             Round round = mGame.getLatestRound();
-            fragment = RoundFragment.newInstance(round);
+            fragment = RoundFragment.newInstance(round, 0);
             fragMan.beginTransaction()
                     .add(R.id.fragment_container, fragment)
                     .commit();
         }
 
+        //ToDo: Depending on aim of game, could remove the Next button and call mGame.newRound() on answer. ?Currently this would mean passing mGame to fragment; feels wrong.
         mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
-            mGame.newRound();
-            Round newRound = mGame.getLatestRound();
-            RoundFragment newFragment = RoundFragment.newInstance(newRound);
+                int prevNumberAthletes = mGame.getLatestRound().getQuestionAthletes().size();
+                mGame.newRound();
+                Round newRound = mGame.getLatestRound();
+                RoundFragment newFragment = RoundFragment.newInstance(newRound, prevNumberAthletes);
 
-            fragMan.beginTransaction()
-                    .replace(R.id.fragment_container, newFragment)
-                    .addToBackStack("round_" + (newRound.getRoundNumber() - 1))
-                    .commit();
+                fragMan.beginTransaction()
+                        .replace(R.id.fragment_container, newFragment)
+                        .addToBackStack("round_" + (newRound.getRoundNumber() - 1))
+                        .commit();
             }
         });
 
         mFinishButton = (Button) findViewById(R.id.finish_button);
         mFinishButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
@@ -86,6 +90,20 @@ public class MainActivity extends FragmentActivity {
                         .commit();
             }
         });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_acks) {
+            Toast.makeText(this, R.string.acks_toast, Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 }

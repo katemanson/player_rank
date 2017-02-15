@@ -56,35 +56,4 @@ public class ApiClient {
         Athletes athletes = gson.fromJson(jsonString, Athletes.class);
         return athletes;
     }
-
-    static void getAthletePhotos(Athletes athletes) {
-
-        HttpsURLConnection connection = null;
-
-        for (Athlete athlete : Athletes) {
-
-            try {
-
-                String picUrlString = athlete.getPicUrl();
-                URL picUrl = new URL(picUrlString);
-                connection = (HttpsURLConnection) picUrl.openConnection();
-
-                InputStream initialStream = new FileInputStream(new File(connection.getInputStream()));
-
-            } catch(Exception e) {
-
-                e.printStackTrace();
-                return null;
-
-            } finally {
-
-                if (connection != null) {
-
-                    connection.disconnect();
-
-                }
-            }
-
-        }
-    }
 }

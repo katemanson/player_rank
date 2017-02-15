@@ -2,7 +2,6 @@ package com.example.kate.playerrank;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,8 +51,7 @@ public class ResultsFragment extends Fragment {
 
         resultsView.setText(
                 "Number of rounds: " + numberOfRounds + "\n" +
-                "Correct answers: " + numberCorrect + "\n" +
-                "Percentage correct: " + percentageCorrect + "%"
+                "Correct answers: " + numberCorrect + " (" + percentageCorrect + "%)"
         );
 
         return view;

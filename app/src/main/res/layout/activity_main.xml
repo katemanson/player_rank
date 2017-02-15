@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:id="@+id/activity_main"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/next_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/next_button"
-            android:padding="18dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginRight="12dp" />
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_container"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/finish_button"
+        <LinearLayout
+            android:id="@+id/button_container"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/finish_button"
-            android:padding="18dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginLeft="12dp"/>
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next_button"
+                android:padding="18dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginRight="12dp" />
+
+            <Button
+                android:id="@+id/finish_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/finish_button"
+                android:padding="18dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginLeft="12dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
